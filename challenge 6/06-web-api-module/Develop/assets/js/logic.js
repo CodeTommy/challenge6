@@ -2,8 +2,8 @@
 
 var questionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
-var choiceEl = document.getElementById("choices");
-var submitBtn = document.getElementById("subnmit");
+var choiceEl = document.getElementById("choice");
+var submitBtn = document.getElementById("submit");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById ("initials");
 var feedbackEl = document.getElementById ("feedback");
@@ -25,10 +25,11 @@ var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 function startQuiz(){
 // hide start screen
 var startScreenEl = document.getElementById("start-screen");
-startScreenEl.setAttribute("class, hide");
+
+startScreenEl.setAttribute("class", "hide");
 
 //un-gide questions section
-questionsEl.removeAttribute("class");
+questionsEl.removeAttribute("hide");
 
 // start timer 
 timerId = setInterval(clockTick, 1000);
@@ -36,7 +37,7 @@ timerId = setInterval(clockTick, 1000);
 // show starting time
 timerEl.textContent = time;
 
-getQuestion();
+
 };
 
 function clockTick() {
@@ -60,12 +61,12 @@ var titleEl = document.getElementById("question-title");
 titleEl.textContent = currentQuestion.title;
 
 //clear out any old question choices
-choicesEL.innerHTML = "";
+choiceEL.inner.HTML = ""
 
 // loop over choices
 currentQuestion.choices.forEach(function(choice,i) {
 //create new button for each choice
-var choiceNode =document.createAttribute("button");
+var choiceNode = document.createAttribute("button");
 choiceNode.setAttribute("class","choice");
 choiceNode.setAttribute("value", choice);
 
