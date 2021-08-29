@@ -23,13 +23,13 @@ var sfxWrong = new Audio("assets/sfx/incorrect.wav");
 
 
 function startQuiz(){
-// hide start screen
+// hide start); screen
 var startScreenEl = document.getElementById("start-screen");
-
+console.log("start-screen" + startScreenEl);
 startScreenEl.setAttribute("class", "hide");
 
 //un-gide questions section
-questionsEl.removeAttribute("hide");
+questionsEl.removeAttribute("class");
 
 // start timer 
 timerId = setInterval(clockTick, 1000);
@@ -37,7 +37,7 @@ timerId = setInterval(clockTick, 1000);
 // show starting time
 timerEl.textContent = time;
 
-
+getQuestion();
 };
 
 function clockTick() {
@@ -61,12 +61,12 @@ var titleEl = document.getElementById("question-title");
 titleEl.textContent = currentQuestion.title;
 
 //clear out any old question choices
-choiceEL.inner.HTML = ""
+choiceEL.innerHTML = "";
 
 // loop over choices
 currentQuestion.choices.forEach(function(choice,i) {
 //create new button for each choice
-var choiceNode = document.createAttribute("button");
+var choiceNode = document.createElement("button");
 choiceNode.setAttribute("class","choice");
 choiceNode.setAttribute("value", choice);
 
@@ -76,7 +76,7 @@ choiceNode.textContent = i + 1 + ". " + choice;
 choiceNode.onclick = questionClick;
 
 //display on the page
-choicesEL.appendChild(choiceNode);
+choiceEL.appendChild(choiceNode);
 
 
 
