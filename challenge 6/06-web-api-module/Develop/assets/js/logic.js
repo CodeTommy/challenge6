@@ -1,9 +1,8 @@
 // variable to ref dom elements
-
 var questionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
-var choiceEl = document.getElementById("choice");
 var submitBtn = document.getElementById("submit");
+var choiceEl = document.getElementById("choice");
 var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById ("initials");
 var feedbackEl = document.getElementById ("feedback");
@@ -61,22 +60,25 @@ var titleEl = document.getElementById("question-title");
 titleEl.textContent = currentQuestion.title;
 
 //clear out any old question choices
-choiceEL.innerHTML = "";
+choiceEl.innerHTML ="";
 
 // loop over choices
 currentQuestion.choices.forEach(function(choice,i) {
 //create new button for each choice
 var choiceNode = document.createElement("button");
 choiceNode.setAttribute("class","choice");
-choiceNode.setAttribute("value", choice);
+choiceNode.setAttribute("value", "choice");
 
 choiceNode.textContent = i + 1 + ". " + choice;
 
 //attach click event listener to each choice
 choiceNode.onclick = questionClick;
 
+
+
 //display on the page
-choiceEL.appendChild(choiceNode);
+
+choiceEl.appendChild(choiceNode);
 
 
 
@@ -86,8 +88,9 @@ choiceEL.appendChild(choiceNode);
 
 function questionClick () {
 //check if user guessed wrong 
-if(this.value !== questions[currentQuestionIndex].answer) {
-//penalize time
+if(this.value !== questions[currentQuestionIndex].answer)  {
+//penalize time 
+console.log (questions[currentQuestionIndex].answer)
 time -= 15;
 
 if(time <0) {
@@ -199,9 +202,9 @@ if (event.key === "Enter") {
 
 
 // user clicks button to start quiz
-startBtn.onclick = startQuiz();
+startBtn.onclick = startQuiz;
 
-submitBtn.onclick = saveHighscore;
+submitBtn.onclick = saveHighscore();
 
 
 
